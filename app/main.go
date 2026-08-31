@@ -23,11 +23,18 @@ func main() {
 	}
 
 	command = strings.TrimSpace(command)
+
+	//builtin exit command
 	if command == "exit" {
 		break
-	}
 
-	fmt.Println(command + ": command not found")
+	//builtin echo command
+	}else if strings.HasPrefix(command, "echo ") {
+		fmt.Println(command[5:])
+		
+	}else {
+		fmt.Println(command + ": command not found")
+	}
 	// command = strings.TrimRight(command, "\r\n")
 	// fmt.Println(command + ": command not found")
 
