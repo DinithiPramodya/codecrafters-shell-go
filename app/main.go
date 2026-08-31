@@ -18,7 +18,7 @@ func main() {
 	if err != nil {
 		fmt.Println("Error reading input:", err)
 	}
-	// fmt.Println(command[:len(command) - 1] + ": command not found")
-	command = strings.TrimRight(command, "\r\n")
-	fmt.Println(command + ": command not found")
+	fmt.Println(command[:len(command) - 1] + ": command not found")
+	// command = strings.TrimRight(command, "\r\n")
+	// fmt.Println(command + ": command not found")
 }
