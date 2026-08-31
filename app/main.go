@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"slices"
 	"strings"
 )
 
@@ -12,7 +13,8 @@ var _ = fmt.Print
 
 //Checks whether a command prefixed 'type' is a builtin command or not(unrecognizable)
 func isShellBuiltin(command string ) bool {
-	if command == "echo" || command == "exit" || command == "type" {
+	builtins := []string{"echo", "exit", "type"}
+	if slices.Contains(builtins, command) {
 		return true
 	} else {
 		return false
@@ -43,7 +45,7 @@ func main() {
 			fmt.Println(command[5:])
 
 		//outputs the type of the command 
-		}else if strings.HasPrefix(command, "type") {
+		}else if strings.HasPrefix(command, "type ") {
 			if isShellBuiltin(command[5:]) {
 				fmt.Println(command[5:] + " is a shell builtin")
 			} else {
